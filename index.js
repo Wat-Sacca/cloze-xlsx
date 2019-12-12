@@ -39,7 +39,8 @@ replacementChars3 = {
   ḷḷ: "ḷḷ",
   ḷ: "l",
   ll: "ḷḷ",
-  l: "ḷ"
+  l: "ḷ",
+  ṃ: "m"
 };
 
 const workSheetsFromFile = xlsx.parse(`${__dirname}/entry.xlsx`);
