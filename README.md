@@ -1,6 +1,6 @@
 # cloze-xlsx
 
-Generator of Pali tests for (Flashcards)[] mobile app.
+Generator of Pali tests for [Flashcards](https://apps.apple.com/us/app/flashcards-deluxe/id307840670) mobile app.
 
 Give it .xlsx file with a list of setences and it will give you clozed word in each sentece, with testing alteration options.
 
