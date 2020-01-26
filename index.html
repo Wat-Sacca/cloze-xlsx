@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Instant Pali Cards</title>
+    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline';"
+    />
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css"
+    />
+    <style>
+      @font-face {
+        font-family: "Handlee";
+        src: url("Handlee-Regular.ttf") format("truetype"); /* Safari, Android, iOS */
+      }
+      body {
+        font-family: sans-serif;
+      }
+      h1 {
+        font-family: "Handlee", sans-serif;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 100px 300px 100px;
+        align-content: stretch;
+        justify-content: center;
+      }
+      .ms-Button.ms-Button--compound {
+        height: fit-content;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Instant Pali Cards</h1>
+      <button class="ms-Button ms-Button--compound" id="selectBtn">
+        <span class="ms-Button-icon"
+          ><i class="ms-Icon ms-Icon--plus"></i
+        ></span>
+        <span class="ms-Button-label">Select file</span>
+        <span class="ms-Button-description">[instruction goes here]</span>
+      </button>
+      Created with Metta at Wat Sacca
+    </div>
+
+    <script>
+      require("./renderer.js");
+    </script>
+  </body>
+</html>
