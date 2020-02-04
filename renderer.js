@@ -19,14 +19,14 @@ document.querySelector("#selectBtn").addEventListener("click", function(event) {
         properties: ["openFile", "multiSelections"]
       },
       function(files) {
-        console.log("files");
+        //console.log("files");
         if (files !== undefined) {
-          console.log("files", files);
+          //console.log("files", files);
         }
       }
     )
     .then(result => {
-      console.log("filePath", result.filePaths[0]);
+      //console.log("filePath", result.filePaths[0]);
 
       ////MAIN CODE
       replacementChars1 = {
@@ -40,11 +40,12 @@ document.querySelector("#selectBtn").addEventListener("click", function(event) {
         ū: "u",
         u: "ū",
         ṅ: "n",
-        n: "ṅ"
+        n: "ṅ",
+        ṇ: "n"
       };
 
       replacementChars3 = {
-        ṭṭ: "t",
+        ṭṭ: "tt",
         ṭ: "t",
         tt: "ṭṭ",
         t: "ṭ",
@@ -63,8 +64,8 @@ document.querySelector("#selectBtn").addEventListener("click", function(event) {
       const workSheetsFromFile = xlsx0.parse(result.filePaths[0]);
       var workbook = xlsx.readFile(result.filePaths[0]);
 
-      console.log("workSheetsFromFile!!!", workSheetsFromFile);
-      console.log("workbook!!!!", workbook);
+      //console.log("workSheetsFromFile!!!", workSheetsFromFile);
+      //console.log("workbook!!!!", workbook);
 
       const sheets = workSheetsFromFile;
 
@@ -97,13 +98,15 @@ document.querySelector("#selectBtn").addEventListener("click", function(event) {
 
           let firstWrong = "";
 
+          //go through all lookup table, if there is a char in the word, replace
+          //once rule is missing, remove it from replacement table
           for (let i = 0; i < lookupChars.length; i++) {
             const charIndexOf = selectedWord.indexOf(lookupChars[i]);
             if (charIndexOf > -1) {
               const char = lookupChars[i];
               firstWrong = selectedWord.replace(char, replacementChars[char]);
               lookupChars.splice(lookupChars.indexOf(char), 1);
-              break;
+              break; //change only once a time
             }
           }
 
@@ -163,7 +166,7 @@ document.querySelector("#selectBtn").addEventListener("click", function(event) {
       });
 
       var buffer = xlsx0.build([{ name: "cloze-example", data: data }]); // Returns a buffer
-      console.log("buffer!!", buffer.toString("utf-8"));
+      //console.log("buffer!!", buffer.toString("utf-8"));
       var fs = require("fs");
 
       /*var wstream = fs.createWriteStream("result.xlsx");
@@ -177,10 +180,10 @@ document.querySelector("#selectBtn").addEventListener("click", function(event) {
         fs.writeFile(filename, buffer.toString("utf-8"), "utf-8");
       });*/
 
-      dialog.showSaveDialog(null, saveOptions, (path) => {
-        console.log(path);
+      dialog.showSaveDialog(saveOptions, (path) => {
+        console.log('path!!!', path);
+        //console.log('buffer.toString("utf-8")')
         fs.writeFile(path, buffer.toString("utf-8"), "utf-8");
-
       });
 
       /*var savePath = dialog.showSaveDialog(saveOptions);
