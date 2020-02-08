@@ -27,3 +27,9 @@ Give it .xlsx file with a list of setences and it will give you clozed word in e
 2. Run 'npm start' to run Electron version
 
 Development is still in progress, Electron version is in alpha stage
+
+## Roadmap
+
+- build automated logging of words for which applied rules did not provide enough alterations
+
+- add automated tests
