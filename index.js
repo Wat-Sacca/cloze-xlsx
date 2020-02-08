@@ -1,6 +1,5 @@
 const xlsx = require('node-xlsx');
 const replacementRules = require('./replacementRules.js');
-//const vowelList = "aeiouAEIOU";
 
 function longest(str) {
   var words = str.split(' ');
@@ -24,16 +23,20 @@ const firstSheetRowsNonempty = firstSheetRows.filter(array => {
   return array.length > 0;
 });
 
-//console.log('firstSheetRowsNonempty', firstSheetRowsNonempty[1]);
-
 let data = [];
-let selectedWords = [];
+let selectedWords = []; // catch duplicates
 
 firstSheetRowsNonempty.forEach((row, i) => {
   if (i > 0) {
-    const sentence = row[0];
+    let sentence = row[0];
 
-    const selectedWord = longest(sentence);
+    const sentenceCopy = Object.assign("", sentence);
+
+    const selectedWord = longest(sentenceCopy);
+    while(selectedWords.includes(selectedWord)){ //handle duplicates
+      sentenceCopy =sentenceCopy.replace(selectedWord,'');
+      selectedWord = longest(sentenceCopy)
+    }
 
     if (!selectedWords.includes(selectedWord)) {
       lookupChars = Object.keys(replacementRules);
@@ -88,14 +91,6 @@ firstSheetRowsNonempty.forEach((row, i) => {
         }
       }
 
-      /*console.log(
-      "selectedWord, firstWrong, secondWrong, thirdWrong, fourthWrong",
-      selectedWord,
-      firstWrong,
-      secondWrong,
-      thirdWrong,
-      fourthWrong
-    );*/
       data.push([
         newSentence,
         selectedWord,
