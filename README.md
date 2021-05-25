@@ -33,3 +33,8 @@ Development is still in progress, Electron version is in alpha stage
 - build automated logging of words for which applied rules did not provide enough alterations
 
 - add automated tests
+
+
+
+https://web.dev/native-file-system/
+

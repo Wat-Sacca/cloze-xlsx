@@ -4,13 +4,13 @@
   "main": "main.js",
   "license": "MIT",
   "dependencies": {
-    "node-xlsx": "^0.15.0",
-    "xlsx": "^0.15.3"
+    "node-xlsx": "0.16.x",
+    "xlsx": "0.17.x"
   },
   "scripts": {
     "start": "electron ."
   },
   "devDependencies": {
-    "electron": "8.x.x"
+    "electron": "13.x.x"
   }
 }
